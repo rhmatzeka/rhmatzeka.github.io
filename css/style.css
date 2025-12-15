@@ -1,0 +1,561 @@
+/* FIX MOBILE MIRING & OVERFLOW */
+/* FIX UTAMA MOBILE: No horizontal scroll + ukuran kecil rapi */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  overscroll-behavior: none;
+}
+
+#bgCanvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+/* Hero center sempurna */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Foto profil fix crop & ukuran mobile */
+
+
+@media (min-width: 640px) {
+  #home img.rounded-full {
+    width: 220px !important;
+    height: 220px !important;
+  }
+}
+
+/* Tulisan lebih kecil & rapi di mobile */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.2;
+  }
+  .typing-text {
+    font-size: 2.8rem !important;
+  }
+  p.text-base {
+    font-size: 1rem !important;
+  }
+  .px-10.py-4 {
+    padding: 0.75rem 2rem !important;
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Carousel fix: card kecil & no horizontal scroll di mobile */
+
+.min-w-\[90vw\] {
+  min-width: calc(100vw - 2rem) !important; /* full width minus padding */
+}
+
+@media (min-width: 768px) {
+  .min-w-\[90vw\] {
+    min-width: 380px !important;
+  }
+  .projects-carousel,
+  .certificates-carousel {
+    gap: 2rem !important;
+    padding: 0;
+  }
+}
+
+/* Panah carousel tetap bisa diklik */
+.prev-project, .next-project, .prev-cert, .next-cert {
+  z-index: 60 !important;
+  background: rgba(0,0,0,0.7) !important;
+  backdrop-filter: blur(8px);
+}
+
+@media (max-width: 767px) {
+  .prev-project, .next-project, .prev-cert, .next-cert {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.4rem !important;
+  }
+}
+
+/* Sisa CSS lama kamu (typing, shine, glitch, dll) tetap di bawah ini */
+.font-orbitron { font-family: 'Orbitron', sans-serif; }
+body { font-family: 'Rajdhani', sans-serif; }
+
+/* Typing Effect */
+.typing-text {
+  border-right: 0.15em solid #00ffcc;
+  animation: blink 1s infinite;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* Shine Effect */
+.shine-card::before {
+  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: rotate(45deg); opacity: 0; pointer-events: none;
+}
+.group:hover .shine-card::before {
+  animation: shine 1.5s ease-in-out;
+  opacity: 1;
+}
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+/* Glitch card education & lainnya tetap sama */
+/* Semua CSS lain copy dari file lama kamu ke sini */
+
+/* CARD PENDIDIKAN — CLEAN, MINIMAL, GLITCH HANYA SAAT HOVER */
+.glitch-card {
+  position: relative;
+  background: rgba(20, 20, 50, 0.6);
+  backdrop-filter: blur(16px);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  text-align: center;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.glitch-card:hover {
+  transform: translateY(-20px);
+  border-color: #00ffff;
+  box-shadow: 
+    0 0 40px rgba(0, 255, 255, 0.6),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* GLITCH EFEK HANYA SAAT HOVER */
+.glitch-card::before,
+.glitch-card::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -50%);
+  font-size: 2.8rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s;
+}
+
+.glitch-card:hover::before {
+  opacity: 1;
+  animation: glitch1 0.6s linear infinite;
+  left: 52%;
+  text-shadow: -2px 0 #ff00ff;
+}
+
+.glitch-card:hover::after {
+  opacity: 1;
+  animation: glitch2 0.6s linear infinite;
+  left: 48%;
+  text-shadow: 2px 0 #00ffff;
+}
+
+@keyframes glitch1 {
+  0%,100% { clip-path: inset(0 0 98% 0); }
+  20% { clip-path: inset(20% 0 70% 0); }
+  40% { clip-path: inset(80% 0 20% 0); }
+  60% { clip-path: inset(10% 0 80% 0); }
+  80% { clip-path: inset(60% 0 40% 0); }
+}
+
+@keyframes glitch2 {
+  0%,100% { clip-path: inset(0 0 98% 0); }
+  30% { clip-path: inset(70% 0 30% 0); }
+  60% { clip-path: inset(30% 0 70% 0); }
+  90% { clip-path: inset(50% 0 50% 0); }
+}
+
+/* Teks normal */
+.glitch-card .year {
+  font-size: 1.4rem;
+  color: #00ffff;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+
+.glitch-card .title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: white;
+  margin: 1rem 0;
+  transition: color 0.4s;
+}
+
+.glitch-card:hover .title {
+  color: transparent;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glitch-card .desc {
+  color: #aaa;
+  font-size: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+/* Hilangkan scrollbar tapi tetap bisa scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Smooth scroll behavior untuk container */
+.overflow-x-auto {
+  scroll-behavior: smooth;
+}
+
+/* Pastikan card lebar tetap */
+.w-80 {
+  width: 320px; /* atau sesuai keinginan */
+}
+
+/* Responsif: di mobile, panah bisa disembunyikan kalau mau */
+/* @media (max-width: 768px) {
+  .absolute button {
+    display: none; /* hilangkan panah di mobile karena sudah bisa swipe */
+  
+/* Responsif card width */
+.max-w-sm {
+  max-width: 320px;
+}
+
+/* Hilangkan scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Panah sembunyi di mobile */
+/* @media (max-width: 768px) {
+  .absolute button {
+    display: none;
+  }
+} */
+
+
+/* Fix hover card agar tidak terpotong oleh overflow-hidden */
+.inner-card {
+  transform: translateY(0) scale(1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.inner-card:hover {
+  transform: translateY(-16px) scale(1.05);
+  border-color: #00ffff; /* untuk projects */
+  box-shadow: 0 20px 50px rgba(0, 204, 255, 0.4);
+}
+
+/* Khusus untuk sertifikat (warna pink) */
+#certificates .inner-card:hover {
+  border-color: #ff66cc;
+  box-shadow: 0 20px 50px rgba(255, 102, 204, 0.4);
+}
+
+/* Pastikan shine effect tetap jalan */
+.group:hover .shine-card::before {
+  animation: shine 1.5s ease-in-out;
+  opacity: 1;
+}
+
+
+/* Responsif khusus mobile untuk carousel certificates & projects */
+/* @media (max-width: 767px) {
+  #certificates .prev-cert,
+  #certificates .next-cert,
+  #projects .prev-project,
+  #projects .next-project {
+    display: none !important;
+  } */
+
+  .certificates-carousel,
+  .projects-carousel {
+    gap: 1.5rem !important;
+  }
+
+/* FIX CARD LEBIH KECIL & COMPACT DI MOBILE */
+@media (max-width: 767px) {
+  /* Container carousel padding kecil */
+  .projects-carousel,
+  .certificates-carousel {
+    padding: 0 1.5rem !important;
+    gap: 1rem !important;
+  }
+
+  /* Card wrapper */
+  .projects-carousel > div,
+  .certificates-carousel > div {
+    min-width: calc(100vw - 3rem) !important; /* full tapi ada ruang swipe */
+  }
+
+  /* Card utama lebih kecil */
+  .projects-carousel .group,
+  .certificates-carousel .group,
+  .projects-carousel .bg-gradient-to-br,
+  .certificates-carousel .bg-gradient-to-br {
+    padding: 1rem !important; /* padding kecil */
+    border-radius: 1.5rem !important;
+  }
+
+  /* Gambar project kecil */
+  .projects-carousel img,
+  .certificates-carousel img {
+    height: 160px !important; /* gambar pendek */
+    border-radius: 1rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  /* Judul card kecil */
+  .projects-carousel h3,
+  .certificates-carousel h3 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  /* Deskripsi kecil */
+  .projects-carousel p,
+  .certificates-carousel p {
+    font-size: 0.875rem !important;
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Tombol GitHub/Demo kecil */
+  .projects-carousel .flex a,
+  .certificates-carousel .flex a {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 0.75rem !important;
+  }
+}
+
+/* Desktop tetap besar */
+@media (min-width: 768px) {
+  .projects-carousel img,
+  .certificates-carousel img {
+    height: 240px !important;
+  }
+  .projects-carousel .group,
+  .certificates-carousel .group {
+    padding: 2rem !important;
+  }
+}
+
+
+.projects-carousel,
+.certificates-carousel {
+  gap: 2.5rem !important; /* 40px */
+}
+
+
+/* FIX FOTO PROFILE - Center sempurna, tidak tenggelam navbar */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; /* ruang aman untuk navbar fixed (mobile & desktop) */
+  padding-bottom: 4rem;
+}
+
+#home img.rounded-full {
+  width: 170px !important;
+  height: 170px !important;
+  min-height: 170px !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  border: 4px solid rgba(0, 255, 255, 0.5);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+  margin: 0 auto !important; /* hapus margin-top manual */
+}
+
+@media (min-width: 640px) {
+  #home img.rounded-full {
+    width: 200px !important;
+    height: 200px !important;
+    min-height: 200px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #home img.rounded-full {
+    width: 220px !important;
+    height: 220px !important;
+  }
+}
+
+#home img.rounded-full {
+  width: 180px !important;
+  height: 180px !important;
+  min-height: 180px !important; /* biar tidak gepeng saat gambar loading */
+  object-fit: cover !important;
+  object-position: center !important;
+  background: rgba(0, 255, 255, 0.1); /* placeholder subtle */
+  margin-top: 0 !important;
+}
+
+@media (min-width: 640px) {
+  #home img.rounded-full {
+    width: 220px !important;
+    height: 220px !important;
+    min-height: 220px !important;
+  }
+}
+
+/* FIX CARD PROJECT & CERTIFICATES - Lebih kecil, tidak gepeng, gambar lebih tinggi */
+.projects-carousel img,
+.certificates-carousel img {
+  height: 200px !important; /* lebih tinggi biar tidak gepeng */
+  min-height: 200px !important;
+  object-fit: cover !important;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 1rem !important;
+}
+
+@media (max-width: 767px) {
+  .projects-carousel > div,
+  .certificates-carousel > div {
+    min-width: calc(100vw - 4rem) !important; /* card hampir full tapi rapi */
+  }
+  
+  .projects-carousel .group,
+  .certificates-carousel .group {
+    padding: 1.5rem !important; /* lebih kecil & compact */
+  }
+}
+
+@media (min-width: 768px) {
+  .projects-carousel img,
+  .certificates-carousel img {
+    height: 280px !important;
+  }
+}
+
+/* Pastikan gap carousel tetap 40px biar tidak loncat */
+.projects-carousel,
+.certificates-carousel {
+  gap: 2.5rem !important;
+}
+
+/* === CARD PROJECT & SERTIFIKAT JADI LEBIH KECIL & RAPI (TAMBAHKAN DI BAWAH SINI) === */
+
+.projects-carousel img,
+.certificates-carousel img {
+  height: 140px !important;        /* gambar lebih pendek */
+  min-height: 140px !important;
+  object-fit: cover !important;
+  border-radius: 1rem !important;
+}
+
+@media (min-width: 768px) {
+  .projects-carousel img,
+  .certificates-carousel img {
+    height: 180px !important;      /* di komputer sedikit lebih besar */
+  }
+}
+
+.projects-carousel .group,
+.certificates-carousel .group {
+  padding: 0.9rem !important;      /* isi card lebih kecil */
+  border-radius: 1.4rem !important;
+}
+
+@media (min-width: 768px) {
+  .projects-carousel .group,
+  .certificates-carousel .group {
+    padding: 1.3rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .projects-carousel h3,
+  .certificates-carousel h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .projects-carousel p,
+  .certificates-carousel p {
+    font-size: 0.8rem !important;
+  }
+
+  .projects-carousel .flex a,
+  .certificates-carousel .flex a {
+    padding: 0.4rem 0.8rem !important;
+    font-size: 0.8rem !important;
+  }
+
+  .projects-carousel > div,
+  .certificates-carousel > div {
+    min-width: calc(100vw - 4.5rem) !important;
+  }
+}
+
+.projects-carousel,
+.certificates-carousel {
+  gap: 2.5rem !important;          /* tetap biar geser mulus */
+}
+
+/* === FIX AKHIR: FOTO PROFILE & CAROUSEL STABIL DI HOSTING === */
+
+/* Foto profile tidak tenggelam navbar + center sempurna */
+#home {
+  padding-top: 100px !important; /* ruang aman untuk navbar fixed */
+}
+
+@media (min-width: 768px) {
+  #home {
+    padding-top: 80px !important;
+  }
+}
+
+#home img.rounded-full {
+  margin-top: 0 !important;
+  width: 170px !important;
+  height: 170px !important;
+}
+
+@media (min-width: 640px) {
+  #home img.rounded-full {
+    width: 210px !important;
+    height: 210px !important;
+  }
+}
+
+/* Carousel gap tetap 40px (2.5rem) biar JS tidak salah hitung & tidak rusak di hosting */
+.projects-carousel,
+.certificates-carousel {
+  gap: 2.5rem !important;
+  padding: 0 3rem !important; /* ruang untuk panah */
+}
+
+@media (max-width: 767px) {
+  .projects-carousel,
+  .certificates-carousel {
+    padding: 0 2.5rem !important;
+  }
+}

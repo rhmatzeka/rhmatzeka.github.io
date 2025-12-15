@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RahmatDev</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="website icon" type="png" href="assets/images/ikon.jpeg" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/tailwind.css">
+</head>
+
+
+<body class="bg-gradient-to-br from-black via-gray-900 to-blue-900 text-white overflow-x-hidden min-h-screen">
+
+  <!-- Background Canvas - Fixed agar tidak overflow -->
+  <canvas id="bgCanvas" class="fixed inset-0 z-[-1] pointer-events-none opacity-50"></canvas>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full z-50 bg-black/70 backdrop-blur-xl border-b border-blue-500/30 px-4 sm:px-6 py-4">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <a href="#home"
+        class="text-2xl sm:text-3xl font-black font-orbitron bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">RahmatDev</a>
+      <ul class="hidden md:flex space-x-6 lg:space-x-8 text-base lg:text-lg">
+        <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+        <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
+        <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
+        <li><a href="#certificates" class="hover:text-cyan-400 transition">Certificates</a></li>
+        <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
+      </ul>
+      <button id="menuBtn" class="md:hidden text-3xl text-cyan-400"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu"
+    class="fixed inset-0 bg-black/95 backdrop-blur-xl z-40 hidden flex flex-col items-center justify-center">
+    <button id="closeMenu" class="absolute top-8 right-8 text-5xl text-gray-400 hover:text-white">&times;</button>
+    <ul class="space-y-8 text-2xl sm:text-3xl">
+      <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+      <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+      <li><a href="#education" class="hover:text-cyan-400 transition">Education</a></li>
+      <li><a href="#skills" class="hover:text-cyan-400 transition">Skills</a></li>
+      <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
+      <li><a href="#certificates" class="hover:text-cyan-400 transition">Certificates</a></li>
+      <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- Hero Section - FIX: full height + center sempurna -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center px-4 overflow-hidden pt-20 md:pt-0">
+  <div class="max-w-7xl mx-auto text-center z-10 w-full">
+    <div class="mb-8">
+      <img src="assets/images/profile.jpg" alt="Rahmat Eka Satria"
+        class="w-48 h-48 mx-auto object-cover object-center rounded-full border-4 border-cyan-500/50 shadow-2xl hover:scale-105 transition duration-500">
+    </div>
+
+      <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black font-orbitron mb-8 leading-tight">
+        <span class="bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">Hi, I'm</span>
+        <br class="hidden sm:block">
+        <span class="typing-text text-cyan-400"></span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto px-4">
+        Full Stack Developer | UI/UX Enthusiast | Creating Modern Web Experiences
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center px-4">
+        <a href="#projects"
+          class="w-full sm:w-auto px-10 py-4 bg-transparent border-2 border-cyan-400 rounded-full font-bold text-lg sm:text-xl hover:bg-cyan-400/20 hover:scale-105 transition-all duration-300">
+          View Projects
+        </a>
+        <a href="assets/cv.pdf" download
+          class="w-full sm:w-auto px-10 py-4 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-full font-bold text-lg sm:text-xl shadow-2xl hover:shadow-cyan-500/80 hover:scale-110 transition-all duration-300">
+          Download Resume
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-20 md:py-32 px-4 max-w-7xl mx-auto relative z-10">
+    <h2
+      class="text-4xl sm:text-5xl md:text-6xl font-black font-orbitron text-center mb-16 bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+      About Me
+    </h2>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6 text-base sm:text-lg text-gray-200">
+        <p>I'm <strong class="text-cyan-400">Rahmat Eka Satria</strong>, a budding developer passionate about blockchain
+          and web development.</p>
+        <p>I started from scratch and am now proficient in HTML, CSS, JS, and modern frameworks.</p>
+        <p>Hobbies include late-night coding, futuristic UI/UX design, and AI experimentation. My goal is to become a
+          full-stack dev at a major tech company.</p>
+        <div class="flex space-x-6 justify-center md:justify-start">
+          <a href="https://github.com/rhmatzeka"
+            class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-500/20 hover:bg-blue-500/50 rounded-full flex items-center justify-center text-2xl transition hover:scale-125"><i
+              class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/rahmatekasatria/"
+            class="w-12 h-12 sm:w-14 sm:h-14 bg-blue-500/20 hover:bg-blue-500/50 rounded-full flex items-center justify-center text-2xl transition hover:scale-125"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/rahmatdev.id/"
+            class="w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent rounded-full flex items-center justify-center text-2xl transition hover:scale-125"><i
+              class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <img src="assets/images/profile.jpg" alt="Rahmat" class="rounded-3xl shadow-2xl w-full object-cover">
+      </div>
+    </div>
+  </section>
+
+  <!-- PENDIDIKAN — CLEAN + GLITCH HANYA SAAT HOVER -->
+  <section id="education" class="py-32 px-6 max-w-7xl mx-auto relative z-10">
+    <h2
+      class="text-6xl font-black font-orbitron text-center mb-24 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
+      Education
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+      <div class="glitch-card" data-text="SD Negeri 01 Jakarta">
+        <div class="year">2011 – 2017</div>
+        <h3 class="title">SD Negeri 01 Bandar Sakti</h3>
+        <div class="desc">Elementary School</div>
+      </div>
+
+      <div class="glitch-card" data-text="SMP Negeri 12 Jakarta">
+        <div class="year">2017 – 2020</div>
+        <h3 class="title">SMP Negeri 01 Bandar Sakti</h3>
+        <div class="desc">Junior High School</div>
+      </div>
+
+      <div class="glitch-card" data-text="SMK Negeri 1 Jakarta">
+        <div class="year">2020 – 2023</div>
+        <h3 class="title">SMK Negeri 2 Terbanggi Besar — TKJ</h3>
+        <div class="desc">Computer and Network Engineering</div>
+      </div>
+
+      <div class="glitch-card" data-text="Universitas Indonesia">
+        <div class="year text-pink-400 animate-pulse">2023 – Now</div>
+        <h3 class="title">S1 Informatics Engineering — UNPAM</h3>
+        <div class="desc">Pamulang University</div>
+      </div>
+    </div>
+  </section>
+  <!-- Skills -->
+  <section id="skills" class="py-32 px-6 max-w-7xl mx-auto relative z-10">
+    <h2
+      class="text-6xl font-black font-orbitron text-center mb-20 bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
+      Skills</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-orange-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-html5 text-6xl text-orange-500 mb-4"></i>
+        <h3 class="text-xl font-bold">HTML5</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-orange-500 to-red-500 h-4 rounded-full skill-bar" data-width="98%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-css3-alt text-6xl text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-bold">CSS3</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-blue-400 to-indigo-500 h-4 rounded-full skill-bar" data-width="95%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-yellow-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-js-square text-6xl text-yellow-400 mb-4"></i>
+        <h3 class="text-xl font-bold">JavaScript</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-4 rounded-full skill-bar" data-width="92%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-blue-600/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-js text-6xl text-blue-600 mb-4"></i>
+        <h3 class="text-xl font-bold">TypeScript</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-blue-600 to-cyan-500 h-4 rounded-full skill-bar" data-width="88%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-cyan-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-react text-6xl text-cyan-400 mb-4"></i>
+        <h3 class="text-xl font-bold">React</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-4 rounded-full skill-bar" data-width="90%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-black hover:scale-110 transition shine-card">
+        <i class="fab fa-react text-6xl text-white mb-4"></i>
+        <h3 class="text-xl font-bold">Next.js</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-gray-600 to-white h-4 rounded-full skill-bar" data-width="87%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-purple-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-laravel text-6xl text-purple-500 mb-4"></i>
+        <h3 class="text-xl font-bold">Laravel</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-purple-500 to-pink-500 h-4 rounded-full skill-bar" data-width="85%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-blue-400/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-php text-6xl text-blue-400 mb-4"></i>
+        <h3 class="text-xl font-bold">PHP</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-blue-400 to-indigo-600 h-4 rounded-full skill-bar" data-width="88%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-green-500/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-python text-6xl text-green-500 mb-4"></i>
+        <h3 class="text-xl font-bold">Python</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-green-500 to-emerald-600 h-4 rounded-full skill-bar" data-width="82%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-red-600/30 hover:scale-110 transition shine-card">
+        <i class="fab fa-java text-6xl text-red-600 mb-4"></i>
+        <h3 class="text-xl font-bold">Java</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-red-600 to-orange-600 h-4 rounded-full skill-bar" data-width="80%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-indigo-500/30 hover:scale-110 transition shine-card">
+        <i class="fas fa-cogs text-6xl text-indigo-500 mb-4"></i>
+        <h3 class="text-xl font-bold">C++</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-indigo-500 to-purple-600 h-4 rounded-full skill-bar" data-width="78%"></div>
+        </div>
+      </div>
+      <div
+        class="skill-card group relative overflow-hidden bg-gray-800/40 backdrop-blur-xl rounded-3xl p-8 border border-amber-500/30 hover:scale-110 transition shine-card">
+        <i class="fas fa-gem text-6xl text-amber-400 mb-4"></i>
+        <h3 class="text-xl font-bold">Solidity</h3>
+        <div class="w-full bg-gray-700 rounded-full h-4 mt-3">
+          <div class="bg-gradient-to-r from-amber-500 to-yellow-500 h-4 rounded-full skill-bar" data-width="75%"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-32 px-6 max-w-7xl mx-auto relative z-10">
+    <h2
+      class="text-6xl font-black font-orbitron text-center mb-20 bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
+      Projects</h2>
+
+    <div class="relative">
+      <!-- Tombol Kiri -->
+      <button
+        class="prev-project absolute left-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-cyan-400 text-3xl shadow-2xl hover:scale-110 transition-all duration-300">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+
+      <!-- Tombol Kanan -->
+      <button
+        class="next-project absolute right-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-cyan-400 text-3xl shadow-2xl hover:scale-110 transition-all duration-300">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="overflow-hidden">
+        <div class="projects-carousel flex gap-10 transition-transform duration-700 ease-in-out">
+          <!-- Project 1 -->
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-cyan-400 transition-all duration-500 shine-card">
+              <img src="assets/images/projects/image.png" alt="BankSampah"
+                class="w-full h-48 object-cover rounded-2xl mb-6 shadow-2xl transition duration-500 group-hover:scale-110">
+              <h3 class="text-2xl font-bold font-orbitron text-center text-cyan-400">WasteBank Application</h3>
+              <p class="text-gray-300 text-center my-4">MAM WasteBank Application</p>
+              <div class="flex justify-center gap-4">
+                <a href="https://github.com/rhmatzeka/BankSampah.git"
+                  class="px-6 py-2 bg-blue-600/30 hover:bg-blue-600/60 rounded-lg border border-blue-500/50">GitHub</a>
+                <a href="https://banksampahmam.page.gd/"
+                  class="px-6 py-2 bg-green-600/30 hover:bg-green-600/60 rounded-lg border border-green-500/50">Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-cyan-400 transition-all duration-500 shine-card">
+              <img src="assets/images/projects/image2.png" alt="Arji Resto"
+                class="w-full h-48 object-cover rounded-2xl mb-6 shadow-2xl transition duration-500 group-hover:scale-110">
+              <h3 class="text-2xl font-bold font-orbitron text-center text-cyan-400">Arji Resto Application</h3>
+              <p class="text-gray-300 text-center my-4">Arji Resto Management System Application</p>
+              <div class="flex justify-center gap-4">
+                <a href="https://github.com/rhmatzeka/SIMResto.git"
+                  class="px-6 py-2 bg-blue-600/30 hover:bg-blue-600/60 rounded-lg border border-blue-500/50">GitHub</a>
+                <a href="#"
+                  class="px-6 py-2 bg-green-600/30 hover:bg-green-600/60 rounded-lg border border-green-500/50">Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-cyan-400 transition-all duration-500 shine-card">
+              <img src="assets/images/projects/image5.png" alt="Arji Resto"
+                class="w-full h-48 object-cover rounded-2xl mb-6 shadow-2xl transition duration-500 group-hover:scale-110">
+              <h3 class="text-2xl font-bold font-orbitron text-center text-cyan-400">LaundryGo Application</h3>
+              <p class="text-gray-300 text-center my-4">LaundryGo Management System Application</p>
+              <div class="flex justify-center gap-4">
+                <a href="https://github.com/rhmatzeka/AplikasiLaundry.git"
+                  class="px-6 py-2 bg-blue-600/30 hover:bg-blue-600/60 rounded-lg border border-blue-500/50">GitHub</a>
+                <a href="#"
+                  class="px-6 py-2 bg-green-600/30 hover:bg-green-600/60 rounded-lg border border-green-500/50">Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-cyan-400 transition-all duration-500 shine-card">
+              <img src="assets/images/projects/image3.png" alt="Arji Resto"
+                class="w-full h-48 object-cover rounded-2xl mb-6 shadow-2xl transition duration-500 group-hover:scale-110">
+              <h3 class="text-2xl font-bold font-orbitron text-center text-cyan-400">Company Profile PSHT</h3>
+              <p class="text-gray-300 text-center my-4">Company Profile PSHT Bandar Sakti</p>
+              <div class="flex justify-center gap-4">
+                <a href="https://github.com/rhmatzeka/CompanyProfilePSHT.git"
+                  class="px-6 py-2 bg-blue-600/30 hover:bg-blue-600/60 rounded-lg border border-blue-500/50">GitHub</a>
+                <a href="https://pshtbandarsakti.page.gd/"
+                  class="px-6 py-2 bg-green-600/30 hover:bg-green-600/60 rounded-lg border border-green-500/50">Demo</a>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="group relative overflow-hidden bg-gradient-to-br from-gray-800/50 to-blue-900/50 backdrop-blur-xl rounded-3xl p-8 border border-blue-500/30 hover:border-cyan-400 transition-all duration-500 shine-card">
+              <img src="assets/images/projects/image4.png" alt="Arji Resto"
+                class="w-full h-48 object-cover rounded-2xl mb-6 shadow-2xl transition duration-500 group-hover:scale-110">
+              <h3 class="text-2xl font-bold font-orbitron text-center text-cyan-400">Company Profile TokoRoti</h3>
+              <p class="text-gray-300 text-center my-4">Company Profile PSHT TokoRoti</p>
+              <div class="flex justify-center gap-4">
+                <a href="https://github.com/rhmatzeka/RoboBake.git"
+                  class="px-6 py-2 bg-blue-600/30 hover:bg-blue-600/60 rounded-lg border border-blue-500/50">GitHub</a>
+                <a href="#"
+                  class="px-6 py-2 bg-green-600/30 hover:bg-green-600/60 rounded-lg border border-green-500/50">Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tambahkan project lain di sini jika ada -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certificates - DIPERBAIKI UNTUK MOBILE -->
+  <section id="certificates" class="py-32 px-6 max-w-7xl mx-auto relative z-10">
+    <h2
+      class="text-6xl font-black font-orbitron text-center mb-20 bg-gradient-to-r from-pink-400 to-rose-600 bg-clip-text text-transparent">
+      Certificates & Achievement
+    </h2>
+
+    <div class="relative">
+      <!-- Panah Prev / Next (akan hilang otomatis di mobile via CSS) -->
+      <button
+        class="prev-cert absolute left-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-pink-400 text-3xl shadow-2xl hover:scale-110 transition-all duration-300">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button
+        class="next-cert absolute right-4 top-1/2 -translate-y-1/2 z-20 w-14 h-14 bg-black/70 backdrop-blur-md rounded-full flex items-center justify-center text-pink-400 text-3xl shadow-2xl hover:scale-110 transition-all duration-300">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <div class="overflow-hidden">
+        <div class="certificates-carousel flex gap-6 md:gap-10 transition-transform duration-700 ease-in-out">
+
+          <!-- Sertifikat 1: RevoU -->
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif1.jpg" alt="RevoU - Intro to Software Engineering"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">CodePolitan - Text Editor For Beginner</h3>
+              <p class="text-sm text-gray-400 mt-2">2024 - 2027</p>
+            </div>
+          </div>
+
+          <!-- Sertifikat 2: CodePolitan -->
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif2.jpg" alt="CodePolitan Certificate"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">CodePolitan - CSS Basic</h3>
+              <p class="text-sm text-gray-400 mt-2">2025 - 2028</p>
+            </div>
+          </div>
+
+          <!-- Tambahkan sertifikat lain sesuai jumlah yang kamu punya -->
+          <!-- Contoh sertifikat ke-3 -->
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif3.jpg" alt="Sertifikat Lain"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">CodePolitan - CMD/Terminal Class</h3>
+              <p class="text-sm text-gray-400 mt-2">2025 - 2028</p>
+            </div>
+          </div>
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif4.jpg" alt="Sertifikat Lain"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">CodePolitan - Basic Computer Programming</h3>
+              <p class="text-sm text-gray-400 mt-2">2023 - 2026</p>
+            </div>
+          </div>
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif5.jpg" alt="Sertifikat Lain"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">CodePolitan - Basic Algorithms and Programming</h3>
+              <p class="text-sm text-gray-400 mt-2">2023 - 2026</p>
+            </div>
+          </div>
+          <div class="min-w-[90vw] flex-shrink-0">
+            <div
+              class="bg-gradient-to-br from-pink-900/40 to-purple-900/40 backdrop-blur-xl rounded-2xl p-8 border border-pink-500/30 text-center hover:border-pink-400 transition-all duration-500 shine-card h-full flex flex-col">
+              <img src="assets/images/certif6.jpg" alt="Sertifikat Lain"
+                class="w-full h-56 md:h-64 object-cover rounded-xl mb-6 shadow-2xl transition duration-500 hover:scale-105 flex-shrink-0">
+              <h3 class="text-xl font-bold text-pink-400 mt-auto">RevoU - Intro to Software Engineering</h3>
+              <p class="text-sm text-gray-400 mt-2">2025</p>
+            </div>
+          </div>
+
+          <!-- Ulangi sesuai kebutuhan (minimal 3-5 card agar carousel terasa hidup) -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="py-32 px-6 max-w-4xl mx-auto text-center relative z-10">
+    <h2
+      class="text-6xl font-black font-orbitron mb-10 bg-gradient-to-r from-pink-400 to-rose-500 bg-clip-text text-transparent">
+      Contact Me</h2>
+    <form class="space-y-6">
+      <input type="text" placeholder="Name"
+        class="w-full p-6 bg-gray-800/60 backdrop-blur-xl rounded-2xl border border-blue-500/30 focus:border-blue-400 outline-none transition text-lg">
+      <input type="email" placeholder="Email"
+        class="w-full p-6 bg-gray-800/60 backdrop-blur-xl rounded-2xl border border-blue-500/30 focus:border-blue-400 outline-none transition text-lg">
+      <textarea placeholder="Message" rows="6"
+        class="w-full p-6 bg-gray-800/60 backdrop-blur-xl rounded-2xl border border-blue-500/30 focus:border-blue-400 outline-none transition text-lg resize-none"></textarea>
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 py-6 rounded-2xl text-2xl font-bold shadow-2xl transition transform hover:-translate-y-2">
+        Send</button>
+    </form>
+  </section>
+
+  <!-- Modal -->
+  <div id="projectModal"
+    class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-6">
+    <div
+      class="bg-gradient-to-br from-gray-900 to-blue-900/80 rounded-3xl p-12 max-w-4xl max-h-[90vh] overflow-y-auto border-4 border-blue-500/50 shadow-2xl relative">
+      <button onclick="closeModal()"
+        class="absolute top-6 right-8 text-4xl text-gray-400 hover:text-white">&times;</button>
+      <div id="modalContent" class="text-xl text-gray-200 text-center">Detail project akan ditampilkan di sini...</div>
+    </div>
+  </div>
+
+  <!-- FOOTER KEREN (BARU DITAMBAHKAN) -->
+  <footer class="relative z-10 bg-black/70 backdrop-blur-2xl border-t border-cyan-500/30 py-16 mt-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Garis atas neon -->
+      <div class="h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mb-12 opacity-60"></div>
+
+      <div class="grid md:grid-cols-3 gap-12 text-center md:text-left">
+        <!-- Brand + Deskripsi singkat -->
+        <div class="space-y-6">
+          <h3
+            class="text-4xl font-black font-orbitron bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            RahmatDev
+          </h3>
+          <p class="text-gray-400 max-w-xs mx-auto md:mx-0">
+            FullStack & Web3 Developer who loves making things <span class="text-cyan-400">glow at night</span>.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-6">
+          <h4 class="text-2xl font-bold text-cyan-400 mb-6">Quick Links</h4>
+          <ul class="space-y-3 text-gray-300">
+            <li><a href="#home" class="hover:text-cyan-400 transition">Home</a></li>
+            <li><a href="#about" class="hover:text-cyan-400 transition">About</a></li>
+            <li><a href="#projects" class="hover:text-cyan-400 transition">Projects</a></li>
+            <li><a href="#contact" class="hover:text-cyan-400 transition">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media -->
+        <div class="space-y-6">
+          <h4 class="text-2xl font-bold text-cyan-400 mb-6">Follow Me</h4>
+          <div class="flex justify-center md:justify-start gap-6">
+            <a href="https://github.com/rhmatzeka" target="_blank"
+              class="w-14 h-14 bg-cyan-500/20 hover:bg-cyan-500/50 rounded-full flex items-center justify-center text-2xl transition transform hover:scale-125 hover:-translate-y-2 shadow-lg">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/rahmatekasatria/" target="_blank"
+              class="w-14 h-14 bg-blue-500/20 hover:bg-blue-500/50 rounded-full flex items-center justify-center text-2xl transition transform hover:scale-125 hover:-translate-y-2 shadow-lg">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/rahmatdev.id/" target="_blank"
+              class="w-14 h-14 bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/50 hover:to-pink-500/50 rounded-full flex items-center justify-center text-2xl transition transform hover:scale-125 hover:-translate-y-2 shadow-lg">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://x.com/rahmateka1922" target="_blank"
+              class="w-14 h-14 bg-sky-500/20 hover:bg-sky-500/50 rounded-full flex items-center justify-center text-2xl transition transform hover:scale-125 hover:-translate-y-2 shadow-lg">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+      <div class="mt-16 pt-8 border-t border-gray-800 text-center">
+        <p class="text-gray-500 text-sm">
+          © <span id="year">2025</span> <span class="text-cyan-400 font-bold">Rahmat Eka Satria</span>.
+          All rights reserved.
+        </p>
+      </div>
+
+      <!-- Garis bawah neon -->
+      <div class="h-1 bg-gradient-to-r from-transparent via-purple-400 to-transparent mt-12 opacity-60"></div>
+    </div>
+
+    <!-- Animasi masuk footer pakai GSAP -->
+    <script>
+      gsap.from("footer > div > *", {
+        scrollTrigger: {
+          trigger: "footer",
+          start: "top 85%",
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: "power3.out"
+      });
+
+      // Update tahun otomatis
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </footer>
+
+
+  <!-- Loading sederhana -->
+<div id="loading" class="fixed inset-0 bg-black z-50 flex items-center justify-center flex-col gap-6">
+  <div class="w-20 h-20 border-8 border-cyan-500/30 border-t-cyan-400 rounded-full animate-spin"></div>
+  <p class="text-cyan-400 text-2xl font-bold">Loading...</p>
+</div>
+
+<script>
+// Hilangkan loading setelah semua selesai
+window.addEventListener('load', function() {
+  document.getElementById('loading').style.opacity = '0';
+  setTimeout(function() {
+    document.getElementById('loading').remove();
+  }, 600);
+});
+</script>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
