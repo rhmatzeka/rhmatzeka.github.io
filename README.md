@@ -29,3 +29,7 @@ If you change the Tailwind classes, rebuild the CSS with the Tailwind standalone
 ```
 
 (`tailwindcss-windows-x64.exe` in this folder is the Windows version of that CLI.)
+
+## License
+
+Released under the [MIT License](LICENSE).
