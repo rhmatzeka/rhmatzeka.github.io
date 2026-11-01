@@ -4,6 +4,8 @@ An earlier version of my personal portfolio, hosted on GitHub Pages at **https:/
 
 > My current portfolio lives at [rahmateka.my.id](https://rahmateka.my.id).
 
+![RahmatDev early portfolio home page](docs/images/preview.png)
+
 ## What's on the page
 
 - **Home**: a short intro
